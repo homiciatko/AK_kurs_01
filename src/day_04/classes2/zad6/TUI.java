@@ -2,6 +2,8 @@ package day_04.classes2.zad6;
 
 import java.util.Scanner;
 
+import day_04.classes2.zad6.exceptions.PeselException;
+
 public class TUI {
 	
 	static Scanner sc = new Scanner(System.in);
@@ -14,7 +16,7 @@ public class TUI {
 		return sc.nextInt();
 	}
 	
-	static void showMainMenu(Clinic clinic) {
+	static void showMainMenu(Clinic clinic) throws PeselException {
 		System.out.println("\nKlinika " + clinic.getName() + " wybierz opcje:\n"
 				+ "1: Dodaj nowego pacjenta\n"
 				+ "2: Dodaj lekarza do kliniki\n"
@@ -26,17 +28,17 @@ public class TUI {
 		getChoise(sc.nextInt(), clinic);
 	}
 
-	static void getChoise(int choice, Clinic clinic) {
+	static void getChoise(int choice, Clinic clinic) throws PeselException {
 		switch (choice) {
 		case 1:
 			System.out.println("podaj dane pacjêta: imie, nazwisko i pesel");
-			clinic.addPatient(new Patient(getString(), getString(), getInt()));
+			clinic.addPatient(Patient.createPatient(getString(), getString(), getInt()));
 			
 			showMainMenu(clinic);
 			break;
 		case 2:
 			System.out.println("podaj dane doktora: imie, nazwisko, pesel, specjalizacje i stawke");
-			clinic.addDoctor(new Doctor(getString(), getString(), getInt(), getString(), getInt()));
+			clinic.addDoctor(Doctor.createDoctor(getString(), getString(), getInt(), getString(), getInt()));
 			showMainMenu(clinic);
 			break;
 		case 3:

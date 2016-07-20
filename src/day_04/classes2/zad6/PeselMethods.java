@@ -2,6 +2,8 @@ package day_04.classes2.zad6;
 
 import java.time.Year;
 
+import day_04.classes2.zad6.exceptions.PeselExistInDataBaseException;
+
 public class PeselMethods {
 
 	
@@ -21,6 +23,12 @@ public class PeselMethods {
 
 	//TODO
 	static boolean checkPesel(Integer pesel) {
+		return false;
+	}
+	
+	static boolean isUsed(Integer pesel)  {
+		if (Person.usedPesels.containsKey(pesel))
+			return true;
 		return false;
 	}
 	

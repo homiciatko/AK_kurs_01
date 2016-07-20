@@ -1,5 +1,10 @@
 package day_04.classes2.zad6;
 
+import java.util.HashMap;
+import java.util.Map;
+import day_04.classes2.zad6.exceptions.PeselException;
+
+import day_04.classes2.zad6.exceptions.PeselExistInDataBaseException;
 
 // TODO:
 // getAge - poprawne wyliczanie wieku i zamienic na stringa
@@ -8,6 +13,14 @@ package day_04.classes2.zad6;
 // sprawdzanie jednoznacznosci peselu
 
 public class Person {
+	
+	public static Map<Integer,Person> usedPesels = new HashMap<Integer, Person>();
+	public static Person createPerson(String name, String surname, int pesel) throws PeselException {
+		if (PeselMethods.isUsed(pesel))
+			throw new PeselExistInDataBaseException("pesel ju¿ istnieje");
+		
+		return new Person(name, surname, pesel);
+	}
 
 	private String name;
 	private String surname;
@@ -15,11 +28,12 @@ public class Person {
 	private String adress;
 	private int phoneNumber;
 	
-	public Person(String name, String surname, int pesel) {
+	protected Person(String name, String surname, int pesel) {
 		super();
 		this.name = name;
 		this.surname = surname;
 		this.pesel = pesel;
+		usedPesels.put(pesel, this);
 	}
 
 	public String toString() {
