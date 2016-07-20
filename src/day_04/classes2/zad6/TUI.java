@@ -15,7 +15,7 @@ public class TUI {
 	}
 	
 	static void showMainMenu(Clinic clinic) {
-		System.out.println("klinika " + clinic.getName() + " wybierz opcje:\n"
+		System.out.println("\nKlinika " + clinic.getName() + " wybierz opcje:\n"
 				+ "1: Dodaj nowego pacjenta\n"
 				+ "2: Dodaj lekarza do kliniki\n"
 				+ "3: Dodaj now¹ wizytê\n"
@@ -65,8 +65,12 @@ public class TUI {
 			System.exit(0);
 		
 		default: 
-			System.out.println("Jeszcze raz");
+			System.out.println("\nWybra³eœ z³¹ cyfrê. wybiersz Jeszcze raz");
 			showMainMenu(clinic);
 		}
+	}
+	
+	public void readPatienData() {
+		
 	}
 }

@@ -5,7 +5,6 @@ import java.time.Year;
 public class PeselMethods {
 
 	
-	//TODO
 	static int getYearOfBirht(Integer pesel){
 		String tmp = pesel.toString();
 		int a = Integer.parseInt(tmp.substring(0, 1));
