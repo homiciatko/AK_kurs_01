@@ -12,6 +12,9 @@ public class HashMapExample {
 		dictionary.put("Hello", "Witam");
 		dictionary.put("Bye", "Spadaj");
 		dictionary.put("cat", "kot");
+		dictionary.put("ug", "kot");
+		
+		System.out.println(dictionary);
 		
 		System.out.println("podaj wyraz po angielsku");
 		Scanner sc = new Scanner(System.in);

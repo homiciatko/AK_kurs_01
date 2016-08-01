@@ -14,7 +14,8 @@ public class ColorExample {
 		for (Color color : Color.values())
 			System.out.println(color);
 		
-		System.out.println(Color.valueOf("WHITE").ordinal());
+//		System.out.println(Color.valueOf("WHITE").ordinal());
+		System.out.println(myColor);
 	}
 
 }

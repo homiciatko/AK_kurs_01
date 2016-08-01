@@ -12,9 +12,8 @@ public class Main {
 			@Override
 			public void run() {
 				new TicTacToeFrame();
+				new ComunicationWindow();
 			}
 		});
-		
 	}
-
 }

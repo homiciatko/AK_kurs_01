@@ -26,13 +26,17 @@ public class BounceFrame extends JFrame implements ActionListener{
 		buttonsPanel.setVisible(true);
 		
 		addButtonToJPanel(buttonsPanel, "START", this);
+		addButtonToJPanel(buttonsPanel, "STOP", new StopListener());
+		addButtonToJPanel(buttonsPanel, "CLEAR", new ClearBallPanelListener());
 		addButtonToJPanel(buttonsPanel, "CLOSE", new CloseListener());
-			
+		
 		add(buttonsPanel, BorderLayout.SOUTH);
 		ballPanel = new BallPanel();
 		add(ballPanel, BorderLayout.CENTER);
 		
 	}
+	
+	
 
 	private void addButtonToJPanel(JPanel panel, String buttonTitle, ActionListener actionListener) {
 		JButton button = new JButton(buttonTitle);

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Main {
 	public static void main(String[] args) {
-		int numberOfThreads = 10;
+		int numberOfThreads = 100;
 		int counter = 10;
 		
 		Balance balance = new Balance();

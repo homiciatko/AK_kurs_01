@@ -2,6 +2,7 @@ package day_08.ballsExample;
 
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import java.util.List;
 
 public class Ball {
 	
@@ -13,11 +14,20 @@ public class Ball {
 
 		
 	public void move(Rectangle2D bounds) {
+//		System.out.println(x +" " + y);
+		
+		testCollision(BallPanel.getBalls());
+		moveWithNoCollision(bounds);
+	}
+	
+	public void moveWithNoCollision(Rectangle2D bounds) {
+//		System.out.println(x +" " + y);
+		
 		x += deltaX;
 		y += deltaY;
 		
 		if( x <= bounds.getMinX()) {
-			x = bounds.getMinX();
+			x = bounds.getMinX() ;
 			deltaX = -deltaX;
 		}
 		if( y <=bounds.getMinY()) {
@@ -32,7 +42,65 @@ public class Ball {
 			y = bounds.getMaxY() - radius;
 			deltaY = -deltaY;
 		}
+	}
 	
+	
+	public void testCollision(List<Ball> balls) {
+		for (Ball ball : balls) {
+			if(ball == this)
+				continue;
+			if(distanceToBall(ball) <= (double)(radius) ) {
+				resolveCollision(ball);
+				System.out.println("ball[" + balls.indexOf(this)+ "]: " +x+ " " + y +" pileczka[" +balls.indexOf(ball) +  "]: " +ball.getX()+ " " +ball.getY());
+			}
+		}
+		
+		
+	}
+	
+	public void resolveCollision(Ball hittedBall) {
+		
+//		if( x < hittedBall.x) {
+//			if ( y < hittedBall.y) {
+//				deltaX = - deltaX;
+//				deltaY = - deltaY;
+//				hittedBall.deltaX = -hittedBall.deltaX;
+//				hittedBall.deltaY = -hittedBall.deltaY;
+//			}
+//			if ( y > hittedBall.y) {
+//				deltaX = - deltaX;
+//				deltaY = - deltaY;
+//				hittedBall.deltaX = -hittedBall.deltaX;
+//				hittedBall.deltaY = -hittedBall.deltaY;
+//			}
+//		}
+//		if( x > hittedBall.x) {
+//			if ( y < hittedBall.y) {
+//				deltaX = - deltaX;
+//				deltaY = - deltaY;
+//				hittedBall.deltaX = -hittedBall.deltaX;
+//				hittedBall.deltaY = -hittedBall.deltaY;
+//			}
+//			if ( y > hittedBall.y) {
+//				deltaX = - deltaX;
+//				deltaY = - deltaY;
+//				hittedBall.deltaX = -hittedBall.deltaX;
+//				hittedBall.deltaY = -hittedBall.deltaY;
+//			}
+//		}
+		
+		
+		deltaX = - deltaX;
+		deltaY = - deltaY;
+		hittedBall.deltaX = -hittedBall.deltaX;
+		hittedBall.deltaY = -hittedBall.deltaY;
+//		hittedBall.moveWithNoCollision(bounds);
+		
+		
+	}
+	
+	private double distanceToBall(Ball ball) {
+		return Math.sqrt((Math.pow((ball.getX() - x), 2)) + (Math.pow(ball.getY() - y, 2)));
 	}
 	
 	public Ellipse2D getShape() {

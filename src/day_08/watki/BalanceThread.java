@@ -16,11 +16,12 @@ public class BalanceThread extends Thread {
 		int score = 0;
 		for (int i=0; i<counter; i++){
 			score = balance.balance();
-			if (score != 0) {
-				break;
-			}
+			System.out.println(Thread.currentThread().getName() + " wywolanie balance() nr: " +i);
+//			if (score != 0) {
+//				break;
+//			}
 		}
-		System.out.println("W¥TEK "+Thread.currentThread().getName()+" wynik to "+score);
+//		System.out.println(Thread.currentThread().getName()+" wynik to "+score);
 	}
 	
 
