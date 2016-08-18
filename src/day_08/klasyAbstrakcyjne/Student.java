@@ -9,7 +9,5 @@ public class Student extends Person{
 	@Override
 	public void live() {
 		System.out.println("ide na uczelnie");
-		
 	}
-
 }
